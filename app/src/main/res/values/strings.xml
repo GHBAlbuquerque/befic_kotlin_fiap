@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">BeFic</string>
+    <string name="be_fic_title">Be:Fic</string>
+    <string name="be_fic_subtitle">O Be:Fic é uma plataforma de autopublicação de histórias, sejam elas fanfics ou conteúdos originais</string>
+    <string name="cadastre_se">Cadastre-se já!</string>
+    <string name="solte_imaginacao">Solte a sua imaginação</string>
+    <string name="solte_imaginacao_subtitle">Escreva histórias, tenha sua própria página, compartilhe ideias e deixe a imaginação fluir</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+    <string name="title">formulário de cadastro</string>
+    <string name="nome_de_usu_rio">nome de usuário</string>
+    <string name="e_mail">e-mail</string>
+    <string name="g_nero">gênero</string>
+    <string name="idade">idade</string>
+    <string name="telefone">telefone</string>
+    <string name="condicoes">condicoes</string>
+    <string name="enviar">enviar</string>
+    <string name="sobre_mim">sobre mim</string>
+    <string name="sobre_mim_text">Nome: Yasmin_S❤\nLocalização: SE- Aracaju\nCadastro: em 23/01/2022 18:24\n\n⿻ᴬ ᵍᵃʳᵒᵗᵃ ⁿᵃᵈᵃ ᵖᵒᵖᵘˡᵃʳ⿻\n*ೃꜰɪᴄᴡʀɪᴛᴇʀ, ᴍᴜʟᴛꜱʜɪᴘ ੈ✩\n° ໑ꜱʜᴇ/ʜᴇʀ; ɪɴꜰᴊ 🏳️‍🌈?</string>
+    <string name="yasmin_s">Yasmin_S</string>
+
+</resources>
