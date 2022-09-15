@@ -41,12 +41,24 @@
         android:id="@+id/btn_clique_aqui"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:text="@string/cadastre_se"
-        android:textSize="16sp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
         android:background="@color/pink_300"
+        android:text="@string/cadastre_se"
         android:textColor="@android:color/white"
-        />
+        android:textSize="16sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/pink_400"
+        android:text="LOGIN"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/txv_sobre_imaginacao"
@@ -57,8 +69,7 @@
         android:text="@string/solte_imaginacao"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txv_subtitulo_imaginacao"

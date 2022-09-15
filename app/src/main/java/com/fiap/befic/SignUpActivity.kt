@@ -52,7 +52,7 @@ class SignUpActivity : AppCompatActivity() {
             val btnEnviar = findViewById<Button>(R.id.button_enviar)
 
             btnEnviar.setOnClickListener {
-                val i = Intent(this, UserProfile::class.java)
+                val i = Intent(this, UserProfileActivity::class.java)
                 startActivity(i)
             }
         }
@@ -60,8 +60,7 @@ class SignUpActivity : AppCompatActivity() {
 
     fun validateValues(): Boolean {
         if (name.isEmpty() || email.isEmpty() || senha.isEmpty() ||
-            phone.isEmpty() || checkBoxState.equals(false) ||
-            !senha.equals(senhaRepetida)
+            phone.isEmpty() || checkBoxState.equals(false)
         ) {
             Toast.makeText(
                 this,
@@ -70,6 +69,14 @@ class SignUpActivity : AppCompatActivity() {
             ).show()
 
             return false
+        }
+
+        if (!senha.equals(senhaRepetida)) {
+            Toast.makeText(
+                this,
+                "As senhas devem ser iguais!",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         return true

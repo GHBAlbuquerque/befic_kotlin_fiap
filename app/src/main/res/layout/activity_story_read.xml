@@ -19,77 +19,63 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txv_titulo2"
+                android:id="@+id/txv_nome_historia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30sp"
-                android:text="@string/be_fic_title"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/avatar"
-                android:layout_width="180sp"
-                android:layout_height="180sp"
-                android:layout_gravity="center"
-                android:layout_marginTop="30sp"
-                android:textAlignment="center"
-                app:srcCompat="@drawable/avatar" />
-
-            <TextView
-                android:id="@+id/txv_nome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30sp"
-                android:text="@string/yasmin_s"
+                android:text="Partners in Crime - Capítulo 1"
                 android:textAlignment="center"
                 android:textColor="@color/pink_300"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txv_sobre_mim"
+                android:id="@+id/txv_notas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="start"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="15sp"
-                android:text="@string/sobre_mim"
-                android:textAlignment="center"
-                android:textSize="20sp"
+                android:text="Notas do autor"
+                android:textAlignment="textStart"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txv_sobre_mim_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="start"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="10sp"
-                android:text="@string/sobre_mim_text"
-                android:textAlignment="center"
-                android:textSize="16sp" />
+                android:text="Pessoal, demorei, mas finalmente postei!! \n Aproveitem! "
+                android:textAlignment="textStart"
+                android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/txv_historias"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30sp"
-                android:text="histórias"
-                android:textAlignment="center"
-                android:textColor="@color/pink_300"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <ListView
-                android:id="@+id/storyList"
+                android:id="@+id/txv_história"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/pink_200" />
+                android:layout_gravity="start"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="15sp"
+                android:text="Capítulo 1 - Aquilo que você faz antes de tudo"
+                android:textAlignment="textStart"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txv_historia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10sp"
+                android:text="@string/historia"
+                android:textAlignment="textStart"
+                android:textSize="13sp" />
+
         </LinearLayout>
     </ScrollView>
 

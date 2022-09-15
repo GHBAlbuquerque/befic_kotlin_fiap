@@ -2,7 +2,6 @@ package com.fiap.befic
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
@@ -12,10 +11,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnCliqueAqui = findViewById<Button>(R.id.btn_clique_aqui)
+        val btnLogin = findViewById<Button>(R.id.btn_login)
 
         btnCliqueAqui.setOnClickListener {
             val i = Intent(this, SignUpActivity::class.java)
-           startActivity(i)
+            startActivity(i)
+        }
+
+        btnLogin.setOnClickListener {
+            val i = Intent(this, UserProfileActivity::class.java)
+            startActivity(i)
         }
     }
 
