@@ -1,4 +1,4 @@
-package com.fiap.befic
+package com.fiap.befic.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,10 +6,13 @@ import android.view.View
 import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
 import androidx.appcompat.app.AppCompatActivity
+import com.fiap.befic.R
 
 
 class UserProfileActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 

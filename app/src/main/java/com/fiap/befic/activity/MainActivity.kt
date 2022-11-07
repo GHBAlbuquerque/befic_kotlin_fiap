@@ -1,9 +1,10 @@
-package com.fiap.befic
+package com.fiap.befic.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.fiap.befic.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,89 +6,99 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
-    <ImageView
+    <ScrollView
+        android:id="@+id/ScrollView01"
         android:layout_width="match_parent"
-        android:layout_height="200sp"
-        android:background="#5E3C1E"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/banner" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txv_titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:text="@string/be_fic_title"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txv_subtitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/be_fic_subtitle"
-        android:textAlignment="center"
-        android:textSize="16sp" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200sp"
+                android:background="#5E3C1E"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/banner" />
 
+            <TextView
+                android:id="@+id/txv_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:text="@string/be_fic_title"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_clique_aqui"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
-        android:background="@color/pink_300"
-        android:text="@string/cadastre_se"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginBottom="30dp"
-        android:background="@color/pink_400"
-        android:text="LOGIN"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/txv_sobre_imaginacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="30dp"
-        android:text="@string/solte_imaginacao"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/txv_subtitulo_imaginacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/solte_imaginacao_subtitle"
-        android:textAlignment="center"
-        android:textSize="16sp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:scaleType="centerInside"
-        app:srcCompat="@drawable/books" />
+            <TextView
+                android:id="@+id/txv_subtitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/be_fic_subtitle"
+                android:textAlignment="center"
+                android:textSize="16sp" />
 
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_clique_aqui"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/pink_300"
+                android:text="@string/cadastre_se"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginBottom="30dp"
+                android:background="@color/pink_400"
+                android:text="LOGIN"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txv_sobre_imaginacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="30dp"
+                android:text="@string/solte_imaginacao"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txv_subtitulo_imaginacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/solte_imaginacao_subtitle"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="200sp"
+                android:layout_height="200sp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/books" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

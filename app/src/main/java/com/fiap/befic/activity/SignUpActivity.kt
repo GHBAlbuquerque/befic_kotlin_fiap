@@ -1,10 +1,11 @@
-package com.fiap.befic
+package com.fiap.befic.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.fiap.befic.R
 
 class SignUpActivity : AppCompatActivity() {
 

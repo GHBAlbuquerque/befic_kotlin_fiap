@@ -1,7 +1,8 @@
-package com.fiap.befic
+package com.fiap.befic.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.fiap.befic.R
 
 class StoryReadActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

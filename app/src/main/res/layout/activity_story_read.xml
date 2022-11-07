@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingHorizontal="20dp"
-    tools:context=".UserProfileActivity">
+    tools:context=".activity.UserProfileActivity">
 
     <ScrollView
         android:id="@+id/ScrollView01"
