@@ -1,7 +1,7 @@
 package com.fiap.befic.data
 
 import com.google.gson.annotations.SerializedName
-import java.time.LocalDate
+import java.util.*
 
 data class Capitulo(
 
@@ -12,9 +12,9 @@ data class Capitulo(
     @SerializedName("titulo")
     val titulo: String,
     @SerializedName("dtPublicacao")
-    val dtPublicacao: LocalDate,
+    val dtPublicacao: Date,
     @SerializedName("dtAtualizacao")
-    val dtAtualizacao: LocalDate,
+    val dtAtualizacao: Date,
     @SerializedName("conteudo")
     val conteudo: String,
     @SerializedName("notasIniciais")

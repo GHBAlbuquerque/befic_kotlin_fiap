@@ -1,7 +1,7 @@
 package com.fiap.befic.data
 
 import com.google.gson.annotations.SerializedName
-import java.time.LocalDate
+import java.util.*
 
 data class Historia(
 
@@ -12,9 +12,9 @@ data class Historia(
     @SerializedName("nome")
     val nome: String,
     @SerializedName("dtPublicacao")
-    val dtPublicacao: LocalDate,
+    val dtPublicacao: Date,
     @SerializedName("dtAtualizacao")
-    val dtAtualizacao: LocalDate,
+    val dtAtualizacao: Date,
     @SerializedName("sinopse")
     val sinopse: String
 )
