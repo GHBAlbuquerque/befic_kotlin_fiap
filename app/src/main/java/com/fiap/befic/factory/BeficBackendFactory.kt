@@ -1,4 +1,4 @@
-import com.fiap.befic.service.BeficBackendService
+import com.fiap.befic.service.UsuarioBeficBackendService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -11,7 +11,7 @@ class BeficBackendFactory {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun beficBackendService(): BeficBackendService {
-        return beficBackendFactory.create(BeficBackendService::class.java)
+    fun beficBackendService(): UsuarioBeficBackendService {
+        return beficBackendFactory.create(UsuarioBeficBackendService::class.java)
     }
 }
