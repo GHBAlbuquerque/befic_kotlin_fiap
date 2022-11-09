@@ -12,7 +12,6 @@ import com.fiap.befic.R
 import com.fiap.befic.data.Historia
 import com.fiap.befic.data.Login
 import com.fiap.befic.data.Usuario
-import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -72,7 +71,8 @@ class UserProfileActivity : AppCompatActivity() {
 
 
     fun getStoriesNames(callback: Call<List<Historia>>, context: Context) {
-        val stories = ArrayList<String>()
+        val storiesName = ArrayList<String>()
+        val stories = ArrayList<Historia>()
 
         callback.enqueue(object : Callback<List<Historia>> {
             override fun onFailure(call: Call<List<Historia>>, t: Throwable) {
@@ -84,7 +84,7 @@ class UserProfileActivity : AppCompatActivity() {
                 response: Response<List<Historia>>
             ) {
                 response.body()?.forEach {
-                    stories.add(it.nome)
+                    stories.add(it)
                 }
 
                 if(stories.isEmpty()) {
@@ -97,11 +97,13 @@ class UserProfileActivity : AppCompatActivity() {
 
                 val storyList = findViewById<ListView>(R.id.storyList)
 
-                val arrayadapter = ArrayAdapter<String>(
-                    context,
-                    android.R.layout.simple_list_item_1,
-                    stories
-                )
+                val arrayadapter = StoryItemListAdapterr(context, stories)
+
+//                val arrayadapter = ArrayAdapter<String>(
+//                    context,
+//                    android.R.layout.simple_list_item_1,
+//                    storiesName
+//                )
 
                 storyList!!.adapter = arrayadapter
                 setListViewHeightBasedOnChildren(storyList)
@@ -110,7 +112,7 @@ class UserProfileActivity : AppCompatActivity() {
                     view.setOnClickListener {
                         val i = Intent(context, StoryReadActivity::class.java)
                         i.putExtra("USER_ID", 2L);
-                        i.putExtra("STORY_ID", 2L);
+                        i.putExtra("STORY_ID", id);
                         startActivity(i)
                     }
                 })
