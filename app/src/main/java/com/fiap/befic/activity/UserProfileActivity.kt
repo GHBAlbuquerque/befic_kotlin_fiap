@@ -87,6 +87,14 @@ class UserProfileActivity : AppCompatActivity() {
                     stories.add(it.nome)
                 }
 
+                if(stories.isEmpty()) {
+                    Toast.makeText(
+                        context,
+                        "Usuário não possui histórias!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
                 val storyList = findViewById<ListView>(R.id.storyList)
 
                 val arrayadapter = ArrayAdapter<String>(
@@ -101,6 +109,8 @@ class UserProfileActivity : AppCompatActivity() {
                 storyList.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
                     view.setOnClickListener {
                         val i = Intent(context, StoryReadActivity::class.java)
+                        i.putExtra("USER_ID", 2L);
+                        i.putExtra("STORY_ID", 2L);
                         startActivity(i)
                     }
                 })

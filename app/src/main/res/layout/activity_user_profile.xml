@@ -36,7 +36,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="30sp"
                 android:textAlignment="center"
-                app:srcCompat="@drawable/avatar" />
+                app:srcCompat="@drawable/avatar_blank" />
 
             <TextView
                 android:id="@+id/txv_nome"
