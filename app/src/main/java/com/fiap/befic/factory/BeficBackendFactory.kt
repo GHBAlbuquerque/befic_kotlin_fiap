@@ -4,7 +4,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class BeficBackendFactory {
 
-    val URL: String = "http://localhost:8080/"
+    val URL: String = "http://192.168.15.135:8080/"
 
     val beficBackendFactory = Retrofit.Builder()
         .baseUrl(URL)

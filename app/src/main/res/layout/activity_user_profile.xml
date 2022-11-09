@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30sp"
-                android:text="@string/yasmin_s"
+                android:text=""
                 android:textAlignment="center"
                 android:textColor="@color/pink_300"
                 android:textSize="20sp"

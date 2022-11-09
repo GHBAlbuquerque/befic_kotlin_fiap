@@ -1,15 +1,21 @@
 package com.fiap.befic.activity
 
 import BeficBackendFactory
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.ArrayAdapter
-import android.widget.ListAdapter
-import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
+import com.fiap.befic.data.Historia
+import com.fiap.befic.data.Login
+import com.fiap.befic.data.Usuario
+import org.w3c.dom.Text
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class UserProfileActivity : AppCompatActivity() {
@@ -19,69 +25,90 @@ class UserProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
-        val callStoriesByUser = BeficBackendFactory().historiaBeficBackendService().findByAutor(1);
+        val callLoginInfo = BeficBackendFactory().loginBeficBackendService().findByUsuario(2);
+        val callUserInfo = BeficBackendFactory().usuarioBeficBackendService().findById(2);
+        val callStoriesByUser = BeficBackendFactory().historiaBeficBackendService().findByAutor(2);
 
-        //TODO: TRY CATCH?
-        val storiesByUser = callStoriesByUser.execute();
+        getLoginInfo(callLoginInfo, this)
+        getUserInfo(callUserInfo, this)
+        getStoriesNames(callStoriesByUser, this);
+    }
 
-        if (storiesByUser.isSuccessful) {
+    fun getLoginInfo(callback: Call<Login>, context: Context) {
+        callback.enqueue(object : Callback<Login> {
+            override fun onFailure(call: Call<Login>, t: Throwable) {
+                Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
+            }
 
-            val storiesNames = storiesByUser.body()?.map { it.nome }
-            val stories = storiesNames as ArrayList<String>
-
-            val storyList = findViewById<ListView>(R.id.storyList)
-
-            val arrayadapter = ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                stories
-            )
-            storyList!!.adapter = arrayadapter
-            setListViewHeightBasedOnChildren(storyList)
-
-            storyList.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-                view.setOnClickListener {
-                    val i = Intent(this, StoryReadActivity::class.java)
-                    startActivity(i)
+            override fun onResponse(
+                call: Call<Login>,
+                response: Response<Login>
+            ) {
+                response.body()?.let {
+                    val userName = findViewById<View>(R.id.txv_nome) as TextView
+                    userName.text = it.username
                 }
-            })
+            }
+        })
+    }
 
-        }
-        /*
-        callStoriesByUser.enqueue(object : Callback<List<Historia>> {
+    fun getUserInfo(callback: Call<Usuario>, context: Context) {
+        callback.enqueue(object : Callback<Usuario> {
+            override fun onFailure(call: Call<Usuario>, t: Throwable) {
+                Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(
+                call: Call<Usuario>,
+                response: Response<Usuario>
+            ) {
+                response.body()?.let {
+                    val aboutMe = findViewById<View>(R.id.txv_sobre_mim_text) as TextView
+                    aboutMe.text = it.perfil
+                }
+            }
+        })
+    }
+
+
+    fun getStoriesNames(callback: Call<List<Historia>>, context: Context) {
+        val stories = ArrayList<String>()
+
+        callback.enqueue(object : Callback<List<Historia>> {
+            override fun onFailure(call: Call<List<Historia>>, t: Throwable) {
+                Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
+            }
 
             override fun onResponse(
                 call: Call<List<Historia>>,
                 response: Response<List<Historia>>
             ) {
+                response.body()?.forEach {
+                    stories.add(it.nome)
+                }
 
-                response.body()?.let {
-                    Log.i("Historia", it.toString())
-                    Toast.makeText(this@UserProfileActivity, it.toString(), Toast.LENGTH_LONG)
-                        .show()
-                } ?: Toast.makeText(
-                    this@UserProfileActivity,
-                    "Não há histórias para este autor.",
-                    Toast.LENGTH_LONG
+                val storyList = findViewById<ListView>(R.id.storyList)
+
+                val arrayadapter = ArrayAdapter<String>(
+                    context,
+                    android.R.layout.simple_list_item_1,
+                    stories
                 )
-                    .show()
 
-            }
+                storyList!!.adapter = arrayadapter
+                setListViewHeightBasedOnChildren(storyList)
 
-            override fun onFailure(call: Call<CEP>?, t: Throwable?) {
-                t?.message?.let { it1 -> Log.e("Erro", it1) }
+                storyList.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+                    view.setOnClickListener {
+                        val i = Intent(context, StoryReadActivity::class.java)
+                        startActivity(i)
+                    }
+                })
+
             }
         })
-
-        val stories = ArrayList<String>()
-        stories.addAll(
-            listOf<String>(
-                "Partners in crime", "Meu Vizinho Mafioso", "When I Kissed The Teacher," +
-                        "Até o Outro Luar", "Coisas extraordinárias"
-            )
-        )*/
-
     }
+
 
     fun setListViewHeightBasedOnChildren(myListView: ListView?) {
         val adapter: ListAdapter = myListView!!.adapter
