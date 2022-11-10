@@ -6,5 +6,5 @@ data class CapituloId(
     @SerializedName("numero")
     val numero: Long,
     @SerializedName("historiaId")
-    val historia: Historia,
+    val historiaId: Long
 )

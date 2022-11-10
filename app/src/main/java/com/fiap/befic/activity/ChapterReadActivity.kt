@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
 import com.fiap.befic.data.Capitulo
+import com.fiap.befic.data.CapituloId
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,7 +19,7 @@ class ChapterReadActivity : AppCompatActivity() {
     var userId = 0L;
     var storyId = 0L;
     var storyName = "";
-    var chapterId = 0L;
+    var chapterNumber = 0L;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,9 @@ class ChapterReadActivity : AppCompatActivity() {
         userId = intent.getSerializableExtra("USER_ID") as Long
         storyId = intent.getSerializableExtra("STORY_ID") as Long
         storyName = intent.getSerializableExtra("STORY_NAME") as String
-        chapterId = intent.getSerializableExtra("CHAPTER_ID") as Long
+        chapterNumber = intent.getSerializableExtra("CHAPTER_NUMBER") as Long
+
+        val chapterId = CapituloId(chapterNumber, storyId)
 
         val callChapter =
             BeficBackendFactory().capituloBeficBackendService().findById(chapterId);
@@ -48,16 +51,21 @@ class ChapterReadActivity : AppCompatActivity() {
                 response.body()?.let {
                     val storyChapter =
                         findViewById<View>(R.id.txv_nome_historia_numero_cap) as TextView
+                    val numero = it.numero.toString();
                     storyChapter.text =
-                        String.format("% - capítulo %", storyName, it.numero)
+                        String.format("%s - capítulo %s", storyName, numero)
 
                     val notas =
                         findViewById<View>(R.id.txv_notas) as TextView
                     notas.text = it.notasIniciais
 
-//                    val historia =
-//                        findViewById<View>(R.id.txv_historia) as TextView
-//                    historia.text = it.conteudo
+                    val nomeCapitulo =
+                        findViewById<View>(R.id.txv_nome_cap) as TextView
+                    nomeCapitulo.text = it.titulo
+
+                    val conteudo =
+                        findViewById<View>(R.id.txv_conteudo) as TextView
+                    conteudo.text = it.conteudo
 
                     val notasFinais =
                         findViewById<View>(R.id.txv_notas_finais) as TextView

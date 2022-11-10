@@ -122,7 +122,7 @@ class StoryInfoActivity : AppCompatActivity() {
                         i.putExtra("USER_ID", userId);
                         i.putExtra("STORY_ID", storyId);
                         i.putExtra("STORY_NAME", storyName);
-                        i.putExtra("CHAPTER_ID", id);
+                        i.putExtra("CHAPTER_NUMBER", id);
                         startActivity(i)
                     }
                 })

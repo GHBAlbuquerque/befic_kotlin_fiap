@@ -7,8 +7,8 @@ data class Capitulo(
 
     @SerializedName("numero")
     val numero: Long,
-    @SerializedName("historia")
-    val historia: Historia,
+    @SerializedName("historiaId")
+    val historiaId: Long,
     @SerializedName("titulo")
     val titulo: String,
     @SerializedName("dtPublicacao")
