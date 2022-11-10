@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.StoryInfoActivity">
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txv_nome_historia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30sp"
+                android:text="Partners in Crime"
+                android:textAlignment="center"
+                android:textColor="@color/pink_300"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/autor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="12sp"
+                android:text="Autor"
+                android:textAlignment="textStart"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txv_autor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10sp"
+                android:text="Nome do Autor"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/sinopse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="12sp"
+                android:text="Sinopse"
+                android:textAlignment="textStart"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txv_sinopse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10sp"
+                android:text="Lorem ipsum dolor sit amet. Eum facilis sunt aut quos nihil rem adipisci fuga sit assumenda sapiente! Sit nihil nihil vel enim quae aut perferendis porro 33 reiciendis veniam quo mollitia minus qui necessitatibus illo. Non inventore illo nam enim quaerat 33 autem aperiam 33 omnis adipisci? Sit nisi nobis a mollitia illum aut atque vitae. Sit harum soluta nam repellat nobis vel minus iste. Ea facere debitis ut ipsum obcaecati et tempore libero in rerum quos sit praesentium officiis qui voluptas assumenda ea molestiae vitae! Non esse quod a fugit adipisci quo nesciunt galisum nam laboriosam voluptatibus in dolores tempora eos fugiat esse! Sed aliquam error aut nisi corporis eum deserunt obcaecati ad beatae tempore. Sed architecto dolorum 33 perferendis consequatur 33 molestiae debitis et natus natus in error aperiam At quaerat esse."
+                android:textAlignment="textStart"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/data_publicacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="12sp"
+                android:text="Data de Publicação"
+                android:textAlignment="textStart"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txv_data_publicacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10sp"
+                android:text="12/11/2022"
+                android:textAlignment="textStart"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/data_atualizacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="12sp"
+                android:text="Data de Publicação"
+                android:textAlignment="textStart"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txv_data_atualizacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10sp"
+                android:text="15/11/2022"
+                android:textAlignment="textStart"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/txv_historias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30sp"
+                android:text="capítulos"
+                android:textAlignment="center"
+                android:textColor="@color/pink_300"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ListView
+                android:id="@+id/chapterList"
+                android:layout_marginHorizontal="30dp"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/pink_200" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

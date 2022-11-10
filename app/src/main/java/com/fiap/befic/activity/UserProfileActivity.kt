@@ -83,11 +83,11 @@ class UserProfileActivity : AppCompatActivity() {
 
 
     fun getStoriesNames(callback: Call<List<Historia>>, context: Context) {
-        val storiesName = ArrayList<String>()
         val stories = ArrayList<Historia>()
 
         callback.enqueue(object : Callback<List<Historia>> {
             override fun onFailure(call: Call<List<Historia>>, t: Throwable) {
+                Log.i("erro:", t.message.toString())
                 Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
             }
 
@@ -109,14 +109,14 @@ class UserProfileActivity : AppCompatActivity() {
 
                 val storyList = findViewById<ListView>(R.id.storyList)
 
-                val arrayadapter = StoryItemListAdapterr(context, stories)
+                val arrayadapter = StoryItemListAdapter(context, stories)
 
                 storyList!!.adapter = arrayadapter
                 setListViewHeightBasedOnChildren(storyList)
 
                 storyList.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
                     view.setOnClickListener {
-                        val i = Intent(context, StoryReadActivity::class.java)
+                        val i = Intent(context, StoryInfoActivity::class.java)
                         i.putExtra("USER_ID", 2L);
                         i.putExtra("STORY_ID", id);
                         startActivity(i)

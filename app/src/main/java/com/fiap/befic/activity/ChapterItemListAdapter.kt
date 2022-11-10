@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.fiap.befic.R
-import com.fiap.befic.data.Historia
+import com.fiap.befic.data.Capitulo
 
-class StoryItemListAdapter(
+class ChapterItemListAdapter(
     private val context: Context,
-    private val dataSource: ArrayList<Historia>
+    private val dataSource: ArrayList<Capitulo>
 ) : BaseAdapter() {
 
     private val inflater: LayoutInflater =
@@ -26,7 +26,7 @@ class StoryItemListAdapter(
     }
 
     override fun getItemId(position: Int): Long {
-        return dataSource[position].id;
+        return dataSource[position].numero;
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -37,12 +37,12 @@ class StoryItemListAdapter(
         if (convertView == null) {
 
             // 2
-            view = inflater.inflate(R.layout.story_item_list, parent, false)
+            view = inflater.inflate(R.layout.chapter_item_list, parent, false)
 
             // 3
             holder = ViewHolder()
-            holder.titleTextView = view.findViewById(R.id.story_title) as TextView
-            holder.idTextView = view.findViewById(R.id.story_id) as TextView
+            holder.titleTextView = view.findViewById(R.id.chapter_title) as TextView
+            holder.numberTextView = view.findViewById(R.id.chapter_number) as TextView
 
             // 4
             view.tag = holder
@@ -54,18 +54,18 @@ class StoryItemListAdapter(
 
         // 6
         val titleTextView = holder.titleTextView
-        val idTextView = holder.idTextView
+        val numberTextView = holder.numberTextView
 
-        val story = getItem(position) as Historia
+        val chapter = getItem(position) as Capitulo
 
-        titleTextView.text = story.nome
-        idTextView.text = story.id.toString()
+        titleTextView.text = chapter.titulo
+        numberTextView.text = chapter.numero.toString()
 
         return view
     }
 
     private class ViewHolder {
         lateinit var titleTextView: TextView
-        lateinit var idTextView: TextView
+        lateinit var numberTextView: TextView
     }
 }

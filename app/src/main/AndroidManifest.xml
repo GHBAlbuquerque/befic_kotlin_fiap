@@ -15,10 +15,13 @@
         android:theme="@style/Theme.BeFic"
         tools:targetApi="31" >
         <activity
+            android:name=".activity.StoryInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.StoryReadActivity"
+            android:name=".activity.ChapterReadActivity"
             android:exported="true" />
         <activity
             android:name=".activity.UserProfileActivity"

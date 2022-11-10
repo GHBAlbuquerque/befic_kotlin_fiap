@@ -9,6 +9,7 @@ interface CapituloBeficBackendService {
     @GET("capitulos")
     fun list(): Call<List<Capitulo>>
 
+    //TODO: REVER
     @GET("capitulos/{id}")
     fun findById(@Path("id") id: Long): Call<Capitulo>
 
