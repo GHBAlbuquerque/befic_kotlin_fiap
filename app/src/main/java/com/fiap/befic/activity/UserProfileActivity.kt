@@ -4,9 +4,13 @@ import BeficBackendFactory
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
+import android.widget.ListAdapter
+import android.widget.ListView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
 import com.fiap.befic.data.Historia
@@ -19,14 +23,21 @@ import retrofit2.Response
 
 class UserProfileActivity : AppCompatActivity() {
 
+    var userId = 0L;
+    var loginId = 0L;
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
-        val callLoginInfo = BeficBackendFactory().loginBeficBackendService().findByUsuario(2);
-        val callUserInfo = BeficBackendFactory().usuarioBeficBackendService().findById(2);
-        val callStoriesByUser = BeficBackendFactory().historiaBeficBackendService().findByAutor(2);
+        userId = intent.getSerializableExtra("USER_ID") as Long
+
+        val callLoginInfo = BeficBackendFactory().loginBeficBackendService().findByUsuario(userId);
+        val callUserInfo = BeficBackendFactory().usuarioBeficBackendService().findById(userId);
+        val callStoriesByUser =
+            BeficBackendFactory().historiaBeficBackendService().findByAutor(userId);
 
         getLoginInfo(callLoginInfo, this)
         getUserInfo(callUserInfo, this)
@@ -54,6 +65,7 @@ class UserProfileActivity : AppCompatActivity() {
     fun getUserInfo(callback: Call<Usuario>, context: Context) {
         callback.enqueue(object : Callback<Usuario> {
             override fun onFailure(call: Call<Usuario>, t: Throwable) {
+                Log.i("erro:", t.message.toString())
                 Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
             }
 
@@ -87,7 +99,7 @@ class UserProfileActivity : AppCompatActivity() {
                     stories.add(it)
                 }
 
-                if(stories.isEmpty()) {
+                if (stories.isEmpty()) {
                     Toast.makeText(
                         context,
                         "Usuário não possui histórias!",
@@ -98,12 +110,6 @@ class UserProfileActivity : AppCompatActivity() {
                 val storyList = findViewById<ListView>(R.id.storyList)
 
                 val arrayadapter = StoryItemListAdapterr(context, stories)
-
-//                val arrayadapter = ArrayAdapter<String>(
-//                    context,
-//                    android.R.layout.simple_list_item_1,
-//                    storiesName
-//                )
 
                 storyList!!.adapter = arrayadapter
                 setListViewHeightBasedOnChildren(storyList)

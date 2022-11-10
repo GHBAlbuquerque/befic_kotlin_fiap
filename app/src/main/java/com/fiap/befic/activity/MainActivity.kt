@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnLogin.setOnClickListener {
-            val i = Intent(this, UserProfileActivity::class.java)
+            val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
         }
     }
