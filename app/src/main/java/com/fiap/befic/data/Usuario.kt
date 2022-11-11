@@ -1,16 +1,17 @@
 package com.fiap.befic.data
 
 import com.google.gson.annotations.SerializedName
+import java.time.LocalDate
 import java.util.*
 
 data class Usuario(
 
     @SerializedName("id")
-    val id: Long,
+    val id: Long?,
     @SerializedName("nome")
     val nome: String,
     @SerializedName("dtNasc")
-    val dtNasc: Date,
+    val dtNasc: String?,
     @SerializedName("celular")
     val celular: String,
     @SerializedName("email")
@@ -18,7 +19,7 @@ data class Usuario(
     @SerializedName("genero")
     val genero: String,
     @SerializedName("perfil")
-    val perfil: String,
+    val perfil: String?,
     @SerializedName("dtCadastro")
-    val dtCadastro: Date
+    val dtCadastro: String?
 )

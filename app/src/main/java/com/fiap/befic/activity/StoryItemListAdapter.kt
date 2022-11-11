@@ -26,7 +26,8 @@ class StoryItemListAdapter(
     }
 
     override fun getItemId(position: Int): Long {
-        return dataSource[position].id;
+        val id = dataSource[position].id
+        id?.let { return id } ?: return 0L
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

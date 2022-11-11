@@ -58,8 +58,8 @@ class LoginActivity : AppCompatActivity() {
                 response: Response<Login>
             ) {
                 response.body()?.let {
-                    userId = it.usuario.id
-                    loginId = it.id
+                    userId = it.usuario.id!!
+                    loginId = it.id!!
 
                     if (userId != 0L &&
                         loginId != 0L
