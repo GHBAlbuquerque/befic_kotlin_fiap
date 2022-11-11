@@ -6,16 +6,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.ListAdapter
-import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
 import com.fiap.befic.data.Historia
 import com.fiap.befic.data.Login
 import com.fiap.befic.data.Usuario
+import com.fiap.befic.utils.ShowViewUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,6 +21,7 @@ import retrofit2.Response
 
 class UserProfileActivity : AppCompatActivity() {
 
+    var loggedUserId = 0L;
     var userId = 0L;
     var loginId = 0L;
 
@@ -39,9 +38,14 @@ class UserProfileActivity : AppCompatActivity() {
         val callStoriesByUser =
             BeficBackendFactory().historiaBeficBackendService().findByAutor(userId);
 
+        val createStoryButton = findViewById<View>(R.id.btn_criar_historia) as Button
+        if (loggedUserId != userId) ShowViewUtils.hide(createStoryButton)
+
         getLoginInfo(callLoginInfo, this)
         getUserInfo(callUserInfo, this)
         getStoriesNames(callStoriesByUser, this);
+
+
     }
 
     fun getLoginInfo(callback: Call<Login>, context: Context) {
@@ -141,9 +145,8 @@ class UserProfileActivity : AppCompatActivity() {
         myListView.layoutParams = params
     }
 
-    fun createStory(view: View?){
+    fun createStory(view: View?) {
         //TODO: CRIAR
     }
-
 
 }

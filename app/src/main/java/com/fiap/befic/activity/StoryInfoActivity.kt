@@ -81,10 +81,10 @@ class StoryInfoActivity : AppCompatActivity() {
                     sinopse.text = it.sinopse
 
                     val data_publicacao = findViewById<View>(R.id.txv_data_publicacao) as TextView
-                    data_publicacao.text = it.dtPublicacao.toString()
+                    data_publicacao.text = it.dtPublicacao
 
                     val data_atualizacao = findViewById<View>(R.id.txv_data_atualizacao) as TextView
-                    data_atualizacao.text = it.dtPublicacao.toString()
+                    data_atualizacao.text = it.dtAtualizacao
 
                 }
             }
