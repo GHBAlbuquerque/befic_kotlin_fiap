@@ -90,7 +90,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/pink_200" />
+
+            <Button
+                android:id="@+id/button_criar_historia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@color/pink_300"
+                android:onClick="createStory"
+                android:text="+ história"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.425"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="10sp"/>
         </LinearLayout>
+
+
     </ScrollView>
 
 </LinearLayout>

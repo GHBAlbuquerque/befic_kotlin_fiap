@@ -141,5 +141,9 @@ class UserProfileActivity : AppCompatActivity() {
         myListView.layoutParams = params
     }
 
+    fun createStory(view: View?){
+        //TODO: CRIAR
+    }
+
 
 }
