@@ -2,6 +2,7 @@ package com.fiap.befic.activity
 
 import BeficBackendFactory
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -10,12 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
 import com.fiap.befic.data.Capitulo
 import com.fiap.befic.data.CapituloId
+import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ChapterReadActivity : AppCompatActivity() {
 
+    lateinit var context: Context
     var userId = 0L;
     var storyId = 0L;
     var storyName = "";
@@ -29,6 +32,7 @@ class ChapterReadActivity : AppCompatActivity() {
         storyId = intent.getSerializableExtra("STORY_ID") as Long
         storyName = intent.getSerializableExtra("STORY_NAME") as String
         chapterNumber = intent.getSerializableExtra("CHAPTER_NUMBER") as Long
+        context = this
 
         val chapterId = CapituloId(chapterNumber, storyId)
 
@@ -74,5 +78,16 @@ class ChapterReadActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    fun goToHome(view: View?) {
+        val btnHome = findViewById<View>(R.id.home)
+
+        btnHome.setOnClickListener {
+
+            val i = Intent(context, UserProfileActivity::class.java)
+            i.putExtra("USER_ID", UserInfoUtils.userId);
+            startActivity(i)
+        }
     }
 }

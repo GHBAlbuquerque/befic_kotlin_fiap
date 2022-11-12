@@ -5,31 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="20dp"
     tools:context=".activity.UserProfileActivity">
+
+<!--    <include layout="@layout/activity_navigation_bar"/>-->
 
     <ScrollView
         android:id="@+id/ScrollView01"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <androidx.drawerlayout.widget.DrawerLayout
-               xmlns:android="http://schemas.android.com/apk/res/android"
-               xmlns:app="http://schemas.android.com/apk/res-auto"
-               xmlns:tools="http://schemas.android.com/tools"
-               android:id="@+id/drawer_layout"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               tools:context=".MainActivity">
-            
-               <!-- Contents are in here. -->
-            
-             </androidx.drawerlayout.widget.DrawerLayout>
 
             <TextView
                 android:id="@+id/txv_titulo2"
@@ -110,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:background="@color/pink_300"
+                android:background="@color/pink_400"
                 android:onClick="createStory"
                 android:text="+ história"
                 android:textColor="@android:color/white"

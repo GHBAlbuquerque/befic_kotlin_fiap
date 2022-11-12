@@ -4,7 +4,9 @@ import BeficBackendFactory
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Layout
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
@@ -14,23 +16,24 @@ import com.fiap.befic.data.Historia
 import com.fiap.befic.data.Login
 import com.fiap.befic.data.Usuario
 import com.fiap.befic.utils.ShowViewUtils
+import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.zip.Inflater
 
 
 class UserProfileActivity : AppCompatActivity() {
 
     var loggedUserId = 0L;
     var userId = 0L;
-    var loginId = 0L;
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
+        loggedUserId = UserInfoUtils.userId
         userId = intent.getSerializableExtra("USER_ID") as Long
 
         val callLoginInfo = BeficBackendFactory().loginBeficBackendService().findByUsuario(userId);
@@ -39,7 +42,11 @@ class UserProfileActivity : AppCompatActivity() {
             BeficBackendFactory().historiaBeficBackendService().findByAutor(userId);
 
         val createStoryButton = findViewById<View>(R.id.btn_criar_historia) as Button
-        if (loggedUserId != userId) ShowViewUtils.hide(createStoryButton)
+        if (loggedUserId != userId) {
+            ShowViewUtils.hide(createStoryButton)
+            val inflater: LayoutInflater = LayoutInflater.from(this)
+            val view: View = inflater.inflate(R.layout.activity_navigation_bar, null)
+        }
 
         getLoginInfo(callLoginInfo, this)
         getUserInfo(callUserInfo, this)

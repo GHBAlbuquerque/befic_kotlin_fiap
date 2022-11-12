@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
 import com.fiap.befic.data.Login
 import com.fiap.befic.data.LoginDto
+import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -68,6 +69,9 @@ class LoginActivity : AppCompatActivity() {
                         val btnEnviar = findViewById<Button>(R.id.button_enviar)
 
                         btnEnviar.setOnClickListener {
+                            UserInfoUtils.userId = userId;
+                            UserInfoUtils.userName = username;
+
                             val i = Intent(context, UserProfileActivity::class.java)
                             i.putExtra("USER_ID", userId);
                             i.putExtra("LOGIN_ID", loginId);

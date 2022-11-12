@@ -12,12 +12,15 @@ import com.fiap.befic.R
 import com.fiap.befic.data.Capitulo
 import com.fiap.befic.data.Historia
 import com.fiap.befic.data.Login
+import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class StoryInfoActivity : AppCompatActivity() {
 
+
+    lateinit var context: Context
     var userId = 0L;
     var storyId = 0L;
     var storyName = "";
@@ -28,6 +31,7 @@ class StoryInfoActivity : AppCompatActivity() {
 
         userId = intent.getSerializableExtra("USER_ID") as Long
         storyId = intent.getSerializableExtra("STORY_ID") as Long
+        context = this
 
         val callLogin =
             BeficBackendFactory().loginBeficBackendService().findByUsuario(userId);
@@ -38,13 +42,13 @@ class StoryInfoActivity : AppCompatActivity() {
         val callChapters =
             BeficBackendFactory().historiaBeficBackendService().getCapitulos(storyId);
 
-        getLoginInfo(callLogin, this)
-        getStoryInfo(callStory, this);
-        getChaptersInfo(callChapters, this);
+        getLoginInfo(callLogin)
+        getStoryInfo(callStory);
+        getChaptersInfo(callChapters);
 
     }
 
-    fun getLoginInfo(callback: Call<Login>, context: Context) {
+    fun getLoginInfo(callback: Call<Login>) {
         callback.enqueue(object : Callback<Login> {
             override fun onFailure(call: Call<Login>, t: Throwable) {
                 Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
@@ -62,7 +66,7 @@ class StoryInfoActivity : AppCompatActivity() {
         })
     }
 
-    fun getStoryInfo(callback: Call<Historia>, context: Context) {
+    fun getStoryInfo(callback: Call<Historia>) {
         callback.enqueue(object : Callback<Historia> {
             override fun onFailure(call: Call<Historia>, t: Throwable) {
                 Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
@@ -91,7 +95,7 @@ class StoryInfoActivity : AppCompatActivity() {
         })
     }
 
-    fun getChaptersInfo(callback: Call<List<Capitulo>>, context: Context) {
+    fun getChaptersInfo(callback: Call<List<Capitulo>>) {
         callback.enqueue(object : Callback<List<Capitulo>> {
             val chapters = ArrayList<Capitulo>()
 
@@ -141,5 +145,17 @@ class StoryInfoActivity : AppCompatActivity() {
         val params = myListView.layoutParams
         params.height = totalHeight + myListView.dividerHeight * (adapter.getCount() - 1)
         myListView.layoutParams = params
+    }
+
+
+    fun goToHome(view: View?) {
+        val btnHome = findViewById<View>(R.id.home)
+
+        btnHome.setOnClickListener {
+
+            val i = Intent(context, UserProfileActivity::class.java)
+            i.putExtra("USER_ID", UserInfoUtils.userId);
+            startActivity(i)
+        }
     }
 }

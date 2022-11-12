@@ -13,6 +13,7 @@ import com.fiap.befic.data.CreateUsuarioLogin
 import com.fiap.befic.data.Login
 import com.fiap.befic.utils.DateInputMask
 import com.fiap.befic.utils.LocalDateUtils
+import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -135,6 +136,8 @@ class SignUpActivity : AppCompatActivity() {
                     if (userId != 0L &&
                         loginId != 0L
                     ) {
+                        UserInfoUtils.userId = userId;
+                        UserInfoUtils.userName = username;
 
                         val i = Intent(context, UserProfileActivity::class.java)
                         i.putExtra("USER_ID", userId);

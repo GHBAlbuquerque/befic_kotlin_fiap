@@ -13,9 +13,9 @@ data class Capitulo(
     @SerializedName("titulo")
     val titulo: String,
     @SerializedName("dtPublicacao")
-    val dtPublicacao: LocalDate?,
+    val dtPublicacao: String?,
     @SerializedName("dtAtualizacao")
-    val dtAtualizacao: LocalDate?,
+    val dtAtualizacao: String?,
     @SerializedName("conteudo")
     val conteudo: String,
     @SerializedName("notasIniciais")

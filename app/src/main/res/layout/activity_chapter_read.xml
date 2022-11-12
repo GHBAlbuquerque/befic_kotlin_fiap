@@ -5,11 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="20dp"
+
     tools:context=".activity.UserProfileActivity">
+
+    <include layout="@layout/activity_navigation_bar"/>
 
     <ScrollView
         android:id="@+id/ScrollView01"
+        android:paddingHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
