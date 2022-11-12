@@ -18,15 +18,7 @@ class NavigationBarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation_bar)
-
-        loggedUserId = UserInfoUtils.userId
-        loggedUserName = UserInfoUtils.userName
-
-        val username = findViewById<View>(R.id.txv_username) as TextView
-        username.text = loggedUserName
-
-        val id = findViewById<View>(R.id.txv_user_id) as TextView
-        id.text = loggedUserId.toString()
+        getInfo()
     }
 
     fun goToHome(view: View?) {
@@ -38,5 +30,16 @@ class NavigationBarActivity : AppCompatActivity() {
             i.putExtra("USER_ID", loggedUserId);
             startActivity(i)
         }
+    }
+
+    fun getInfo() {
+        loggedUserId = UserInfoUtils.userId
+        loggedUserName = UserInfoUtils.username
+
+        val username = findViewById<View>(R.id.txv_username) as TextView
+        username.text = loggedUserName
+
+        val id = findViewById<View>(R.id.txv_user_id) as TextView
+        id.text = loggedUserId.toString()
     }
 }

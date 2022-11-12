@@ -25,6 +25,7 @@ import java.util.zip.Inflater
 
 class UserProfileActivity : AppCompatActivity() {
 
+    lateinit var context: Context
     var loggedUserId = 0L;
     var userId = 0L;
 
@@ -33,6 +34,7 @@ class UserProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
+        context = this
         loggedUserId = UserInfoUtils.userId
         userId = intent.getSerializableExtra("USER_ID") as Long
 
@@ -48,14 +50,14 @@ class UserProfileActivity : AppCompatActivity() {
             val view: View = inflater.inflate(R.layout.activity_navigation_bar, null)
         }
 
-        getLoginInfo(callLoginInfo, this)
-        getUserInfo(callUserInfo, this)
-        getStoriesNames(callStoriesByUser, this);
+        getLoginInfo(callLoginInfo)
+        getUserInfo(callUserInfo)
+        getStoriesNames(callStoriesByUser);
 
 
     }
 
-    fun getLoginInfo(callback: Call<Login>, context: Context) {
+    fun getLoginInfo(callback: Call<Login>) {
         callback.enqueue(object : Callback<Login> {
             override fun onFailure(call: Call<Login>, t: Throwable) {
                 Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
@@ -73,7 +75,7 @@ class UserProfileActivity : AppCompatActivity() {
         })
     }
 
-    fun getUserInfo(callback: Call<Usuario>, context: Context) {
+    fun getUserInfo(callback: Call<Usuario>) {
         callback.enqueue(object : Callback<Usuario> {
             override fun onFailure(call: Call<Usuario>, t: Throwable) {
                 Log.i("erro:", t.message.toString())
@@ -93,7 +95,7 @@ class UserProfileActivity : AppCompatActivity() {
     }
 
 
-    fun getStoriesNames(callback: Call<List<Historia>>, context: Context) {
+    fun getStoriesNames(callback: Call<List<Historia>>) {
         val stories = ArrayList<Historia>()
 
         callback.enqueue(object : Callback<List<Historia>> {
@@ -138,7 +140,6 @@ class UserProfileActivity : AppCompatActivity() {
         })
     }
 
-
     fun setListViewHeightBasedOnChildren(myListView: ListView?) {
         val adapter: ListAdapter = myListView!!.adapter
         var totalHeight = 0
@@ -153,7 +154,14 @@ class UserProfileActivity : AppCompatActivity() {
     }
 
     fun createStory(view: View?) {
-        //TODO: CRIAR
+        val btnCreateStory = findViewById<Button>(R.id.btn_criar_historia)
+
+        btnCreateStory.setOnClickListener {
+
+            val i = Intent(context, CreateStoryActivity::class.java)
+            i.putExtra("USER_ID", userId);
+            startActivity(i)
+        }
     }
 
 }

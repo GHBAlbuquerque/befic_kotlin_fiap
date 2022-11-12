@@ -137,7 +137,7 @@ class SignUpActivity : AppCompatActivity() {
                         loginId != 0L
                     ) {
                         UserInfoUtils.userId = userId;
-                        UserInfoUtils.userName = username;
+                        UserInfoUtils.username = username;
 
                         val i = Intent(context, UserProfileActivity::class.java)
                         i.putExtra("USER_ID", userId);

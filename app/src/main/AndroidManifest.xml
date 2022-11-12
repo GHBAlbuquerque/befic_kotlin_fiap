@@ -15,6 +15,9 @@
         android:theme="@style/Theme.BeFic"
         tools:targetApi="31">
         <activity
+            android:name=".activity.CreateStoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.NavigationBarActivity"
             android:exported="false" />
         <activity
