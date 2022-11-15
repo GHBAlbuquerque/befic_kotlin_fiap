@@ -2,14 +2,16 @@ package com.fiap.befic.activity
 
 import BeficBackendFactory
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
-import com.fiap.befic.data.Historia
-import com.fiap.befic.data.Usuario
+import com.fiap.befic.data.dto.CreateStoryDto
+import com.fiap.befic.data.entity.Historia
+import com.fiap.befic.data.entity.Usuario
 import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +27,7 @@ class CreateStoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_story)
+        context = this;
     }
 
     fun getValues(view: View?) {
@@ -61,40 +64,21 @@ class CreateStoryActivity : AppCompatActivity() {
 
         if (validateValues()) {
 
-            val btnEnviar = findViewById<Button>(R.id.button_enviar)
 
-            btnEnviar.setOnClickListener {
+            val newStory = CreateStoryDto(
+                2,
+                storyName,
+                sinopsis
+            )
 
-                val author = Usuario(
-                    UserInfoUtils.userId,
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                )
+            val callStoryCreate =
+                BeficBackendFactory().historiaBeficBackendService().save(newStory);
 
-                val newStory = Historia(
-                    null,
-                    author,
-                    storyName,
-                    null,
-                    null,
-                    sinopsis
-                )
+            getStoryInfo(callStoryCreate)
 
-                val callStoryCreate =
-                    BeficBackendFactory().historiaBeficBackendService().save(newStory);
-
-                getStoryInfo(callStoryCreate)
-            }
         }
     }
 
-    //TODO: ver e terminar
-    //TODO: criar botao adicionar capitulo
     fun getStoryInfo(callback: Call<Historia>) {
         callback.enqueue(object : Callback<Historia> {
             override fun onFailure(call: Call<Historia>, t: Throwable) {
@@ -106,7 +90,16 @@ class CreateStoryActivity : AppCompatActivity() {
                 response: Response<Historia>
             ) {
                 response.body()?.let {
-                        Log.i("log", "chegou aqui")
+                    Toast.makeText(
+                        baseContext,
+                        "História cadastrada com sucesso!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    val i = Intent(context, CreateChapterActivity::class.java)
+                    i.putExtra("STORY_ID", it.id);
+                    i.putExtra("STORY_NAME", it.nome);
+                    startActivity(i)
 
                 }
             }

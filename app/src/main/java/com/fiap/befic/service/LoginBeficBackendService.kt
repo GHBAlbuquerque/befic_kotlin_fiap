@@ -1,8 +1,8 @@
 package com.fiap.befic.service
 
-import com.fiap.befic.data.CreateUsuarioLogin
-import com.fiap.befic.data.Login
-import com.fiap.befic.data.LoginDto
+import com.fiap.befic.data.dto.CreateUsuarioLoginDto
+import com.fiap.befic.data.entity.Login
+import com.fiap.befic.data.dto.LoginDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -21,6 +21,6 @@ interface LoginBeficBackendService {
     fun findByUsuario(@Path("userId") userId: Long): Call<Login>
 
     @POST("login/criar")
-    fun save(@Body createUsuarioLogin: CreateUsuarioLogin): Call<Login>
+    fun save(@Body createUsuarioLoginDto: CreateUsuarioLoginDto): Call<Login>
 
 }

@@ -1,8 +1,8 @@
-package com.fiap.befic.data
+package com.fiap.befic.data.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class CreateUsuarioLogin(
+data class CreateUsuarioLoginDto(
 
     @SerializedName("username")
     val username: String,

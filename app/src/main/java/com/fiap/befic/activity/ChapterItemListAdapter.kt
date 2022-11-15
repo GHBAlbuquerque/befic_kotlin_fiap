@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.fiap.befic.R
-import com.fiap.befic.data.Capitulo
+import com.fiap.befic.data.entity.Capitulo
 
 class ChapterItemListAdapter(
     private val context: Context,

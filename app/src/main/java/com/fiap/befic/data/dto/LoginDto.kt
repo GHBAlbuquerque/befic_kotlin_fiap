@@ -1,4 +1,4 @@
-package com.fiap.befic.data
+package com.fiap.befic.data.dto
 
 import com.google.gson.annotations.SerializedName
 

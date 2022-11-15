@@ -1,6 +1,6 @@
 package com.fiap.befic.service
 
-import com.fiap.befic.data.Usuario
+import com.fiap.befic.data.entity.Usuario
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

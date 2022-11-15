@@ -4,7 +4,6 @@ import BeficBackendFactory
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Layout
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,15 +11,14 @@ import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
 import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
-import com.fiap.befic.data.Historia
-import com.fiap.befic.data.Login
-import com.fiap.befic.data.Usuario
+import com.fiap.befic.data.entity.Historia
+import com.fiap.befic.data.entity.Login
+import com.fiap.befic.data.entity.Usuario
 import com.fiap.befic.utils.ShowViewUtils
 import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.zip.Inflater
 
 
 class UserProfileActivity : AppCompatActivity() {
@@ -156,12 +154,11 @@ class UserProfileActivity : AppCompatActivity() {
     fun createStory(view: View?) {
         val btnCreateStory = findViewById<Button>(R.id.btn_criar_historia)
 
-        btnCreateStory.setOnClickListener {
 
-            val i = Intent(context, CreateStoryActivity::class.java)
-            i.putExtra("USER_ID", userId);
-            startActivity(i)
-        }
+        val i = Intent(context, CreateStoryActivity::class.java)
+        i.putExtra("USER_ID", userId);
+        startActivity(i)
+
     }
 
 }

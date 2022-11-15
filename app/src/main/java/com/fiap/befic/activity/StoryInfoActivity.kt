@@ -9,9 +9,9 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
-import com.fiap.befic.data.Capitulo
-import com.fiap.befic.data.Historia
-import com.fiap.befic.data.Login
+import com.fiap.befic.data.entity.Capitulo
+import com.fiap.befic.data.entity.Historia
+import com.fiap.befic.data.entity.Login
 import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback

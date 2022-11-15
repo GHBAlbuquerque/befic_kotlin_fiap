@@ -9,8 +9,8 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
-import com.fiap.befic.data.CreateUsuarioLogin
-import com.fiap.befic.data.Login
+import com.fiap.befic.data.dto.CreateUsuarioLoginDto
+import com.fiap.befic.data.entity.Login
 import com.fiap.befic.utils.DateInputMask
 import com.fiap.befic.utils.LocalDateUtils
 import com.fiap.befic.utils.UserInfoUtils
@@ -98,7 +98,7 @@ class SignUpActivity : AppCompatActivity() {
 
                 val localdate = LocalDateUtils.getDate(birthday)
 
-                val newUserLogin = CreateUsuarioLogin(
+                val newUserLogin = CreateUsuarioLoginDto(
                     username,
                     senha,
                     name,

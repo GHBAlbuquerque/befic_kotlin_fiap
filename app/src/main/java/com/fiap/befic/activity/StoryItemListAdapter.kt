@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.fiap.befic.R
-import com.fiap.befic.data.Historia
+import com.fiap.befic.data.entity.Historia
 
 class StoryItemListAdapter(
     private val context: Context,

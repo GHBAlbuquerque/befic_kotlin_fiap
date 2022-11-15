@@ -9,8 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
-import com.fiap.befic.data.Capitulo
-import com.fiap.befic.data.CapituloId
+import com.fiap.befic.data.entity.Capitulo
+import com.fiap.befic.data.entity.CapituloId
 import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback

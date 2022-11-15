@@ -11,8 +11,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
-import com.fiap.befic.data.Login
-import com.fiap.befic.data.LoginDto
+import com.fiap.befic.data.entity.Login
+import com.fiap.befic.data.dto.LoginDto
 import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback
@@ -68,15 +68,15 @@ class LoginActivity : AppCompatActivity() {
 
                         val btnEnviar = findViewById<Button>(R.id.button_enviar)
 
-                        btnEnviar.setOnClickListener {
-                            UserInfoUtils.userId = userId;
-                            UserInfoUtils.username = username;
 
-                            val i = Intent(context, UserProfileActivity::class.java)
-                            i.putExtra("USER_ID", userId);
-                            i.putExtra("LOGIN_ID", loginId);
-                            startActivity(i)
-                        }
+                        UserInfoUtils.userId = userId;
+                        UserInfoUtils.username = username;
+
+                        val i = Intent(context, UserProfileActivity::class.java)
+                        i.putExtra("USER_ID", userId);
+                        i.putExtra("LOGIN_ID", loginId);
+                        startActivity(i)
+
                     }
                 } ?: Toast.makeText(
                     baseContext,
