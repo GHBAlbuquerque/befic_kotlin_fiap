@@ -126,12 +126,11 @@ class UserProfileActivity : AppCompatActivity() {
                 setListViewHeightBasedOnChildren(storyList)
 
                 storyList.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-                    view.setOnClickListener {
-                        val i = Intent(context, StoryInfoActivity::class.java)
-                        i.putExtra("USER_ID", 2L);
-                        i.putExtra("STORY_ID", id);
-                        startActivity(i)
-                    }
+                    val i = Intent(context, StoryInfoActivity::class.java)
+                    i.putExtra("USER_ID", 2L);
+                    i.putExtra("STORY_ID", id);
+                    startActivity(i)
+
                 })
 
             }
@@ -154,11 +153,9 @@ class UserProfileActivity : AppCompatActivity() {
     fun createStory(view: View?) {
         val btnCreateStory = findViewById<Button>(R.id.btn_criar_historia)
 
-
         val i = Intent(context, CreateStoryActivity::class.java)
         i.putExtra("USER_ID", userId);
         startActivity(i)
-
     }
 
 }

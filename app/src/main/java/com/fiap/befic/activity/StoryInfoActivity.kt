@@ -121,14 +121,12 @@ class StoryInfoActivity : AppCompatActivity() {
                 setListViewHeightBasedOnChildren(chapterList)
 
                 chapterList.setOnItemClickListener(AdapterView.OnItemClickListener { parent, view, position, id ->
-                    view.setOnClickListener {
-                        val i = Intent(context, ChapterReadActivity::class.java)
-                        i.putExtra("USER_ID", userId);
-                        i.putExtra("STORY_ID", storyId);
-                        i.putExtra("STORY_NAME", storyName);
-                        i.putExtra("CHAPTER_NUMBER", id);
-                        startActivity(i)
-                    }
+                    val i = Intent(context, ChapterReadActivity::class.java)
+                    i.putExtra("USER_ID", userId);
+                    i.putExtra("STORY_ID", storyId);
+                    i.putExtra("STORY_NAME", storyName);
+                    i.putExtra("CHAPTER_NUMBER", id);
+                    startActivity(i)
                 })
             }
         })
@@ -151,11 +149,18 @@ class StoryInfoActivity : AppCompatActivity() {
     fun goToHome(view: View?) {
         val btnHome = findViewById<View>(R.id.home)
 
-        btnHome.setOnClickListener {
+        val i = Intent(context, UserProfileActivity::class.java)
+        i.putExtra("USER_ID", UserInfoUtils.userId);
+        startActivity(i)
 
-            val i = Intent(context, UserProfileActivity::class.java)
-            i.putExtra("USER_ID", UserInfoUtils.userId);
-            startActivity(i)
-        }
+    }
+
+    fun createChapter(view: View?) {
+        val btnCreateChapter = findViewById<Button>(R.id.btn_criar_capitulo)
+
+        val i = Intent(context, CreateChapterActivity::class.java)
+        i.putExtra("STORY_ID", storyId);
+        i.putExtra("STORY_NAME", storyName);
+        startActivity(i)
     }
 }

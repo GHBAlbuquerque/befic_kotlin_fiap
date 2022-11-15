@@ -4,11 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="20dp"
+    android:orientation="vertical"
     tools:context=".activity.CreateChapterActivity">
+
+    <include layout="@layout/activity_navigation_bar"
+        android:id="@+id/header_logged_in" />
 
     <ScrollView
         android:id="@+id/ScrollView01"
+        android:paddingHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

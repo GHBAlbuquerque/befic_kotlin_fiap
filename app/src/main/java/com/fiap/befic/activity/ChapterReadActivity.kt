@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
 import com.fiap.befic.data.entity.Capitulo
 import com.fiap.befic.data.entity.CapituloId
+import com.fiap.befic.utils.ShowViewUtils
 import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback
@@ -63,6 +64,12 @@ class ChapterReadActivity : AppCompatActivity() {
                         findViewById<View>(R.id.txv_notas) as TextView
                     notas.text = it.notasIniciais
 
+                    if (notas.text.equals("")) {
+                        ShowViewUtils.hide(notas)
+                        val notasTitulo = findViewById<View>(R.id.notas) as View
+                        ShowViewUtils.hide(notasTitulo)
+                    }
+
                     val nomeCapitulo =
                         findViewById<View>(R.id.txv_nome_cap) as TextView
                     nomeCapitulo.text = it.titulo
@@ -74,6 +81,13 @@ class ChapterReadActivity : AppCompatActivity() {
                     val notasFinais =
                         findViewById<View>(R.id.txv_notas_finais) as TextView
                     notasFinais.text = it.notasFinais
+
+                    if (notasFinais.text.equals("")) {
+                        ShowViewUtils.hide(notasFinais)
+                        val notasFinaisTitulo = findViewById<View>(R.id.notas_finais) as View
+                        ShowViewUtils.hide(notasFinaisTitulo)
+                    }
+
 
                 }
             }
