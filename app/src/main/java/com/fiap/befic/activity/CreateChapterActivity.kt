@@ -124,4 +124,13 @@ class CreateChapterActivity : AppCompatActivity() {
             }
         })
     }
+
+    fun goToHome(view: View?) {
+        val btnHome = findViewById<View>(R.id.home)
+
+        val i = Intent(context, UserProfileActivity::class.java)
+        i.putExtra("USER_ID", UserInfoUtils.userId);
+        startActivity(i)
+
+    }
 }

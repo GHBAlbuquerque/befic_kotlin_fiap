@@ -167,7 +167,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20sp"
                 android:background="@color/gray"
-                android:onClick="createChapter"
+                android:onClick="deleteStory"
                 android:paddingHorizontal="10sp"
                 android:text="deletar história"
                 android:textColor="@android:color/white"

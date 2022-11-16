@@ -41,7 +41,7 @@
         android:layout_height="20dp"
         android:scaleType="centerCrop"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="500dp"
         app:srcCompat="@drawable/delete_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

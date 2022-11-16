@@ -4,14 +4,18 @@ import BeficBackendFactory
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.fiap.befic.R
 import com.fiap.befic.data.entity.Capitulo
 import com.fiap.befic.data.entity.Historia
 import com.fiap.befic.data.entity.Login
+import com.fiap.befic.utils.ShowViewUtils
 import com.fiap.befic.utils.UserInfoUtils
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,6 +25,7 @@ class StoryInfoActivity : AppCompatActivity() {
 
 
     lateinit var context: Context
+    var loggedUserId = 0L;
     var userId = 0L;
     var storyId = 0L;
     var storyName = "";
@@ -29,6 +34,7 @@ class StoryInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_story_info)
 
+        loggedUserId = UserInfoUtils.userId
         userId = intent.getSerializableExtra("USER_ID") as Long
         storyId = intent.getSerializableExtra("STORY_ID") as Long
         context = this
@@ -46,6 +52,13 @@ class StoryInfoActivity : AppCompatActivity() {
         getStoryInfo(callStory);
         getChaptersInfo(callChapters);
 
+        val createChapterButton = findViewById<View>(R.id.btn_criar_capitulo) as Button
+        val deleteStoryButton = findViewById<View>(R.id.btn_deletar_historia) as Button
+        if (loggedUserId != userId) {
+            ShowViewUtils.hide(createChapterButton)
+            ShowViewUtils.hide(deleteStoryButton)
+            val inflater: LayoutInflater = LayoutInflater.from(this)
+        }
     }
 
     fun getLoginInfo(callback: Call<Login>) {
@@ -156,11 +169,58 @@ class StoryInfoActivity : AppCompatActivity() {
     }
 
     fun createChapter(view: View?) {
-        val btnCreateChapter = findViewById<Button>(R.id.btn_criar_capitulo)
-
         val i = Intent(context, CreateChapterActivity::class.java)
         i.putExtra("STORY_ID", storyId);
         i.putExtra("STORY_NAME", storyName);
         startActivity(i)
     }
+
+    fun deleteStory(view: View?) {
+        val builder = AlertDialog.Builder(context);
+        builder.setTitle("Deletar");
+        builder.setMessage("Tem certeza que deseja deletar a história?")
+            .setCancelable(false)
+            .setPositiveButton("Sim") { dialog, id ->
+                // Delete selected note from database
+                val callStoryDelete =
+                    BeficBackendFactory().historiaBeficBackendService().delete(storyId);
+                getDeleteStoryInfo(callStoryDelete)
+            }
+            .setNegativeButton("Não") { dialog, id ->
+                dialog.dismiss()
+            }
+
+        val alert = builder.create()
+        alert.show()
+    }
+
+    fun getDeleteStoryInfo(callback: Call<Void>) {
+        callback.enqueue(object : Callback<Void> {
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Log.i("erro:", t.message.toString())
+                Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(
+                call: Call<Void>,
+                response: Response<Void>
+            ) {
+                Log.i("sucesso:", "História excluída com sucesso.")
+                Toast.makeText(baseContext, "História excluída com sucesso.", Toast.LENGTH_SHORT)
+                    .show()
+
+                Handler()
+                    .postDelayed(
+                        Runnable {
+                            val i = Intent(context, UserProfileActivity::class.java)
+                            i.putExtra("USER_ID", userId);
+                            startActivity(i)
+                        }, 1500
+                    )
+            }
+        })
+    }
+
+    //TODO: CRIAR DELEÇÃO DE CAPITULO
 }

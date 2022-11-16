@@ -4,10 +4,7 @@ import com.fiap.befic.data.dto.CreateStoryDto
 import com.fiap.befic.data.entity.Capitulo
 import com.fiap.befic.data.entity.Historia
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface HistoriaBeficBackendService {
 
@@ -25,5 +22,8 @@ interface HistoriaBeficBackendService {
 
     @GET("historias/{id}/capitulos")
     fun getCapitulos(@Path("id") id: Long): Call<List<Capitulo>>
+
+    @DELETE("historias/{id}")
+    fun delete(@Path("id") id: Long): Call<Void>
 
 }
