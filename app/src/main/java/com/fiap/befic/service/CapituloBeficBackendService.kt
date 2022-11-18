@@ -20,7 +20,7 @@ interface CapituloBeficBackendService {
     @POST("capitulos")
     fun save(@Body capituloDto: CreateChapterDto): Call<Capitulo>
 
-    @DELETE("capitulos/deletar")
+    @POST("capitulos/deletar")
     fun delete(@Body capituloId: CapituloId): Call<Void>
 
 }

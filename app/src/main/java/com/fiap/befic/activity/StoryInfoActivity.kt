@@ -181,7 +181,6 @@ class StoryInfoActivity : AppCompatActivity() {
         builder.setMessage("Tem certeza que deseja deletar a história?")
             .setCancelable(false)
             .setPositiveButton("Sim") { dialog, id ->
-                // Delete selected note from database
                 val callStoryDelete =
                     BeficBackendFactory().historiaBeficBackendService().delete(storyId);
                 getDeleteStoryInfo(callStoryDelete)
@@ -222,5 +221,4 @@ class StoryInfoActivity : AppCompatActivity() {
         })
     }
 
-    //TODO: CRIAR DELEÇÃO DE CAPITULO
 }
